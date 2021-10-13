@@ -29,37 +29,37 @@
                             @if(controller.possiblePosition(row, col)) {
                                 @if(controller.isSet(row, col)) {
                                     @if(controller.cell(row, col).getContent.whichColor.equals(Color.white)) {
-                                        <img src=@routes.Assets.versioned("images/media/WhiteStone.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/WhiteStone.png")></a>
                                     } else {
-                                        <img src=@routes.Assets.versioned("images/media/BlackStone.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/BlackStone.png")></a>
                                     }
                                 } else {
                                     @if(cellTopLeft.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellTopLeft.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellTopLeft.png")></a>
                                     }
                                     @if(cellTopRight.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellTopRight.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellTopRight.png")></a>
                                     }
                                     @if(cellBottomRight.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellBottomRight.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellBottomRight.png")></a>
                                     }
                                     @if(cellBottomLeft.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellBottomLeft.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellBottomLeft.png")></a>
                                     }
                                     @if(cellMiddle.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellMiddle.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellMiddle.png")></a>
                                     }
                                     @if(cellHorizontalTop.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellHorizontalTop.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellHorizontalTop.png")></a>
                                     }
                                     @if(cellHorizontalBottom.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellHorizontalBottom.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellHorizontalBottom.png")></a>
                                     }
                                     @if(cellVerticalLeft.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellVerticalLeft.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellVerticalLeft.png")></a>
                                     }
                                     @if(cellVerticalRight.contains((row, col))) {
-                                        <img src=@routes.Assets.versioned("images/media/AvailableCellVerticalRight.png")>
+                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/AvailableCellVerticalRight.png")></a>
                                     }
                                 }
                             } else {
