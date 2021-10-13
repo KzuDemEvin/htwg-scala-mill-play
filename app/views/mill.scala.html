@@ -1,3 +1,4 @@
+@import de.htwg.se.mill.model.fieldComponent.Color
 @(controller:de.htwg.se.mill.controller.controllerComponent.ControllerInterface)
 
 @size= @{ controller.fieldsize }
@@ -5,6 +6,9 @@
 @main("HTWG Mill") {
     <center>
         <h1>Mill Gameboard</h1>
+        <form action="/new">
+            <input type="submit" value="New Game" />
+        </form>
         <div align="center">
             <div>
             @for(row <- 0 until size) {
@@ -14,6 +18,26 @@
                     {if(controller.isSet(row, col)) {
                         {" " + controller.cell(row,col).toString.take(1).toLowerCase() + " "}
                     } else " o "}
+                    else " - "}
+                }
+                </div>
+            }
+            </div>
+        </div>
+        <div align="center">
+            <div>
+            @for(row <- 0 until size) {
+                <div>
+                @for(col <- 0 until size) {
+                    @{if(controller.possiblePosition(row, col)) {
+                        if(controller.isSet(row, col)) {
+                            if(controller.cell(row, col).getContent.whichColor.equals(Color.white)) {
+                                " w "
+                            } else {
+                                " b "
+                            }
+                        } else " o "
+                    }
                     else " - "}
                 }
                 </div>
