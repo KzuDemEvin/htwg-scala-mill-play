@@ -1,0 +1,49 @@
+h1 {
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    font-size: 62px;
+    font-weight: 800;
+    line-height: 72px;
+    margin: 0 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.gameTable {
+    background-color: sienna;
+}
+
+/* Buttons and navigation */
+
+.buttonTable {
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+input {
+    margin-top: -30px;
+    position: relative;
+    -webkit-transition: background 400ms;
+    transition: background 400ms;
+    color: #fff;
+    background-color: grey;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    outline: 0;
+    border: 0;
+    border-radius: 0.25rem;
+    -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+/* ABOUT */
+
+.aboutContainer {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.centerContainer {
+    text-align: center;
+}
