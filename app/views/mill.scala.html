@@ -3,46 +3,77 @@
 
 @size= @{ controller.fieldsize }
 
+@cellHorizontal = @{List((0,1), (0,2), (0,4), (0,5), (1,2), (1,4), (5,2), (5,4), (6,1), (6,2), (6,4), (6,5))}
+@cellVertical = @{List((1,0), (1,6),(2,0), (2,1), (2,5), (2,6), (4,0), (4,1), (4,5), (4,6), (5,0), (5,6))}
+@cellTopLeft= @{List((0,0), (1,1), (2,2))}
+@cellTopRight= @{List((0,6), (1,5), (2,4))}
+@cellBottomRight= @{List((6,6), (5,5), (4,4))}
+@cellBottomLeft= @{List((6,0), (5,1), (4,2))}
+@cellMiddle= @{List((1,3), (3,5), (5,3), (3,1))}
+@cellHorizontalTop= @{List((0,3), (4,3))}
+@cellHorizontalBottom= @{List((2,3), (6,3))}
+@cellVerticalLeft= @{List((3,0), (3,4))}
+@cellVerticalRight= @{List((3,2), (3,6))}
+
 @main("HTWG Mill") {
     <center>
         <h1>Mill Gameboard</h1>
         <form action="/new">
             <input type="submit" value="New Game" />
         </form>
-        <div align="center">
-            <div>
+        <table>
             @for(row <- 0 until size) {
-                <div>
-                @for(col <- 0 until size) {
-                    @{if(controller.possiblePosition(row, col))
-                    {if(controller.isSet(row, col)) {
-                        {" " + controller.cell(row,col).toString.take(1).toLowerCase() + " "}
-                    } else " o "}
-                    else " - "}
-                }
-                </div>
-            }
-            </div>
-        </div>
-        <div align="center">
-            <div>
-            @for(row <- 0 until size) {
-                <div>
-                @for(col <- 0 until size) {
-                    @{if(controller.possiblePosition(row, col)) {
-                        if(controller.isSet(row, col)) {
-                            if(controller.cell(row, col).getContent.whichColor.equals(Color.white)) {
-                                " w "
+                <tr>
+                    @for(col <- 0 until size) {
+                        <td>
+                            @if(controller.possiblePosition(row, col)) {
+                                @if(controller.isSet(row, col)) {
+                                    @if(controller.cell(row, col).getContent.whichColor.equals(Color.white)) {
+                                        <img src=@routes.Assets.versioned("images/media/WhiteStone.png")>
+                                    } else {
+                                        <img src=@routes.Assets.versioned("images/media/BlackStone.png")>
+                                    }
+                                } else {
+                                    @if(cellTopLeft.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellTopLeft.png")>
+                                    }
+                                    @if(cellTopRight.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellTopRight.png")>
+                                    }
+                                    @if(cellBottomRight.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellBottomRight.png")>
+                                    }
+                                    @if(cellBottomLeft.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellBottomLeft.png")>
+                                    }
+                                    @if(cellMiddle.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellMiddle.png")>
+                                    }
+                                    @if(cellHorizontalTop.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellHorizontalTop.png")>
+                                    }
+                                    @if(cellHorizontalBottom.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellHorizontalBottom.png")>
+                                    }
+                                    @if(cellVerticalLeft.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellVerticalLeft.png")>
+                                    }
+                                    @if(cellVerticalRight.contains((row, col))) {
+                                        <img src=@routes.Assets.versioned("images/media/AvailableCellVerticalRight.png")>
+                                    }
+                                }
                             } else {
-                                " b "
+                                @if(cellHorizontal.contains((row, col))) {
+                                    <img src=@routes.Assets.versioned("images/media/UnavailableCellHorizontal.png")>
+                                }
+                                @if(cellVertical.contains((row, col))) {
+                                    <img src=@routes.Assets.versioned("images/media/UnavailableCellVertical.png")>
+                                }
                             }
-                        } else " o "
+                        </td>
                     }
-                    else " - "}
-                }
-                </div>
+                </tr>
             }
-            </div>
-        </div>
+        </table>
     </center>
 }
