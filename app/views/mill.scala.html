@@ -18,9 +18,35 @@
 @main("HTWG Mill") {
     <center>
         <h1>Mill Gameboard</h1>
-        <form action="/new">
-            <input type="submit" value="New Game" />
-        </form>
+        <table>
+            <tr>
+                <td>
+                    <form action="/new">
+                        <input type="submit" value="New Game" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/random">
+                        <input type="submit" value="Random Game" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/undo">
+                        <input type="submit" value="Undo" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/redo">
+                        <input type="submit" value="Redo" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/about">
+                        <input type="submit" value="About" />
+                    </form>
+                </td>
+            </tr>
+        </table>
         <table>
             @for(row <- 0 until size) {
                 <tr>
