@@ -5,6 +5,7 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.MillController.index
+GET     /about                      controllers.MillController.about()
 GET     /new                        controllers.MillController.newGame
 GET     /random                     controllers.MillController.randomGame
 GET     /undo                       controllers.MillController.undo

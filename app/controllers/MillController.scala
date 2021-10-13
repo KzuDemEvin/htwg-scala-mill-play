@@ -4,8 +4,8 @@ import com.google.inject.{Guice, Injector}
 import de.htwg.se.mill.MillModule
 import de.htwg.se.mill.controller.controllerComponent.{ControllerInterface, GameState}
 import play.api.mvc._
-
 import javax.inject._
+import play.twirl.api.Html
 
 @Singleton
 class MillController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
@@ -48,7 +48,11 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(print())
   }
 
-  def print(): String = {
-    s"${controller.fieldToString}\n${GameState.state}"
+  def about(): Action[AnyContent] = Action {
+    Ok(views.html.index())
+  }
+
+  def print(): Html = {
+    views.html.mill(controller)
   }
 }

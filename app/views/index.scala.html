@@ -1,5 +1,78 @@
 @()
 
-@main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+@main("HTWG Mill") {
+  <h1>About Mill</h1>
+  <hr />
+
+  <p>
+    Mill (also known as Nine Men's Morris, Merels/Merrills/Merelles/etc., Mühle, Mølle,
+    Muehle, Mühlespiel, Molenspel, Jeu de Moulin, Tria, and Mlýn) is a board game that has
+    a history that dates as far back as1400 BCE. Boards have been found on Viking ships
+    and on stones that were later used in buildings. One example can be found on a pillar
+    in the Pikering Church in Yorkshire, England. The game is played on a board of three
+    concentric squares, with a total of 24 spaces (circles at the intersection of the
+    lines on the board).
+    <br />
+    <center>
+      <img src=@routes.Assets.versioned("images/mill_board.gif")>
+    </center>
+  </p>
+
+  <h1>Instructions</h1>
+  <hr />
+
+  <h3>Objective</h3>
+
+  <p>
+    Force the other player into a position where it is impossible to win, either by
+    maneuvering so they cannot move, or by reducing them to two (2) pieces.
+  </p>
+
+  <h3>Rules</h3>
+
+  <p>
+    <ul>
+      <li>
+        At the outset of the game, each player has nine pieces to place on the board. The players
+        alternate placing their pieces on the board until all of the pieces have been placed.
+        Pieces can only be placed on one of the unoccupied spaces on the board. This is the
+        "Place" phase of the game, as indicated on the right-hand side (circled in blue):
+      </li>
+      <li>
+        Once all of the pieces have been placed on the board, the players take turns moving one
+        of their pieces to an unoccupied adjacent space. This is the "Move" phase of the game,
+        note the circled bit:
+      </li>
+      <li>
+        Whenever a player puts three pieces in a row (horizontally or vertically), they have
+        created a mill. Examples of mills:
+        <center>
+          <table>
+            <tr>
+              <td>
+                <img src=@routes.Assets.versioned("images/mill_mill1.gif")>
+              </td>
+              <td>
+                <img src=@routes.Assets.versioned("images/mill_mill2.gif")>
+              </td>
+            </tr>
+          </table>
+        </center>
+      </li>
+      <li>
+        A mill may be formed either by placing a piece during the beginning of the game, or by
+        moving a piece after all of the pieces have been placed.
+      </li>
+      <li>
+        If a player has been reduced to only three (3) pieces, then the player may move one of
+        their pieces to any unoccupied space on the board -- they're no longer limited to just
+        moving to adjacent spaces.
+      </li>
+      <li>
+        When a player forms a mill, the player then removes one of the other player's pieces.
+        Any piece that is not itself part of a mill may be removed (except that if the other
+        player only has three pieces left and they're in a mill, any of those pieces can be removed).
+      </li>
+    </ul>
+  </p>
 }
