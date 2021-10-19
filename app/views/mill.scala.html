@@ -57,9 +57,9 @@
                             @if(controller.possiblePosition(row, col)) {
                                 @if(controller.isSet(row, col)) {
                                     @if(controller.cell(row, col).getContent.whichColor.equals(Color.white)) {
-                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/WhiteStone.png")></a>
+                                        <a href="@{s"/${row}${col}"}"><img class="rotate" src=@routes.Assets.versioned("images/media/WhiteStone.png")></a>
                                     } else {
-                                        <a href="@{s"/${row}${col}"}"><img src=@routes.Assets.versioned("images/media/BlackStone.png")></a>
+                                        <a href="@{s"/${row}${col}"}"><img class="rotate" src=@routes.Assets.versioned("images/media/BlackStone.png")></a>
                                     }
                                 } else {
                                     @if(cellTopLeft.contains((row, col))) {

@@ -13,6 +13,12 @@ h1 {
     background-color: sienna;
 }
 
+.rotate:hover {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
+}
+
 /* Buttons and navigation */
 
 .buttonTable {
