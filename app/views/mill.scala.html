@@ -16,30 +16,15 @@
 @cellVerticalRight= @{List((3,2), (3,6))}
 
 @main("HTWG Mill") {
-    <center>
-        <h1>
-            Mill GameBoard
-        </h1>
-        <table class="buttonTable">
-            <tr>
-                <td>
-                    <a href="/new"><button type="button" class="btn btn-secondary" style="background-color: darkslategrey">New Game</button></a>
-                </td>
-                <td>
-                    <a href="/random"><button type="button" class="btn btn-secondary" style="background-color: darkslategrey"> Random Game </button></a>
-                </td>
-                <td>
-                    <a href="/undo"><button type="button" class="btn btn-secondary" style="background-color: darkslategrey">Undo</button></a>
-                </td>
-                <td>
-                    <a href="/redo"><button type="button" class="btn btn-secondary" style="background-color: darkslategrey">Redo</button></a>
-                </td>
-                <td>
-                    <a href="/about"><button type="button" class="btn btn-secondary" style="background-color: darkslategrey">Redo</button></a>
-                </td>
-            </tr>
-        </table>
-        <table class="gameTable">
+    <div class="container">
+        <div class="btn-group d-flex justify-content-center">
+            <a href="/new" class="btn btn-secondary" style="background-color: darkslategray">New Game</a>
+            <a href="/random" class="btn btn-secondary" style="background-color: darkslategray">Random Game</a>
+            <a href="/undo" class="btn btn-secondary" style="background-color: darkslategray">Undo</a>
+            <a href="/redo" class="btn btn-secondary" style="background-color: darkslategray">Redo</a>
+        </div>
+        <img class="img-fluid" src=@routes.Assets.versioned("images/media/WhiteStone.png")>
+        <table>
             @for(row <- 0 until size) {
                 <tr>
                     @for(col <- 0 until size) {
@@ -93,5 +78,5 @@
                 </tr>
             }
         </table>
-    </center>
+    </div>
 }
