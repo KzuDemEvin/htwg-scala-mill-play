@@ -2,121 +2,185 @@
 
 @main("HTWG Mill") {
   <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">About Mill</h5>
-        <p class="card-text">
-          Mill (also known as Nine Men's Morris, Merels/Merrills/Merelles/etc., Mühle, Mølle,
-          Muehle, Mühlespiel, Molenspel, Jeu de Moulin, Tria, and Mlýn) is a board game that has
-          a history that dates as far back as1400 BCE. Boards have been found on Viking ships
-          and on stones that were later used in buildings. One example can be found on a pillar
-          in the Pikering Church in Yorkshire, England. The game is played on a board of three
-          concentric squares, with a total of 24 spaces (circles at the intersection of the
-          lines on the board).
-          <br />
-          <div class="d-flex align-items-center">
-            <img class="d-flex justify-content-center" src=@routes.Assets.versioned("images/mill_board.gif")>
+    <div class="row mt-3">
+      <div class="col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center">About Mill</h5>
+            <p class="card-text">
+              Nine men's morris is a strategy board game for two players dating at least to the Roman Empire. The game
+              is also known as nine-man morris, mill, mills, the mill game, merels, merrills, merelles, marelles, morelles,
+              and ninepenny marl in English. The game has also been called cowboy checkers and is sometimes printed on
+              the back of checkerboards. Nine men's morris is a solved game, that is, a game whose optimal strategy has
+              been calculated. It has been shown that with perfect play from both players, the game results in a draw.
+
+              The Latin word merellus means 'gamepiece', which may have been corrupted in English to 'morris',
+              while miles is Latin for soldier.
+
+              Three main alternative variations of the game are three, six, and twelve men's morris.
+              <br />
+              <img class="rounded mx-auto d-block img-fluid" src=@routes.Assets.versioned("images/mill_board.gif")>
+            </p>
           </div>
-        </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">History</h5>
+            <p class="card-text">
+              According to R. C. Bell, the earliest known board for the game includes diagonal lines and was "cut into the roofing
+              slabs of the temple at Kurna in Egypt"; he estimated a date for them of c. 1400 BCE.[13] Friedrich Berger wrote
+              that some of the diagrams at Kurna include Coptic crosses, however, making it "doubtful" that the diagrams date
+              to 1400 BCE. Berger concluded: "Certainly they cannot be dated."
+
+              One of the earliest mentions of the game may be in Ovid's Ars Amatoria. In book III (c. 8 CE), after discussing
+              latrones, a popular board game, Ovid wrote:
+
+              There is another game divided into as many parts as there are months in the year. A table has three pieces on
+              either side; the winner must get all the pieces in a straight line. It is a bad thing for a woman not to know
+              how to play, for love often comes into being during play.
+
+              Berger believes the game was "probably well known by the Romans", as there are many boards on Roman buildings,
+              even though dating them is impossible because the buildings "have been easily accessible" since they were
+              built. It is possible that the Romans were introduced to the game via trade routes, but this cannot be proven.
+
+
+              A 13th-century illustration in Libro de los juegos of the game being played with dice
+
+              An early gaming table (Germany, 1735) featuring chess/draughts (left) and nine men's morris (right),
+              Cleveland Museum of Art
+              The game might have been played by the sculptors while they were building the huge temples. Inscriptions
+              are seen in many places, carved on stone. The game peaked in popularity in medieval England. A brick
+              found on a mediaeval site near Wisbech, had been used by the brickmakers as a board before being fired.
+              Boards have been found carved into the cloister seats at the English cathedrals at Canterbury, Gloucester,
+              Norwich, Salisbury and Westminster Abbey. These boards used holes, not lines, to represent the nine
+              spaces on the board—hence the name "nine holes"—and forming a diagonal row did not win the game. Another
+              board is carved into the base of a pillar in Chester Cathedral in Chester. Giant outdoor boards were
+              sometimes cut into village greens. In Shakespeare's 17th century work A Midsummer Night's Dream, Titania
+              refers to such a board: "The nine men's morris is filled up with mud".
+
+              Some authors say the game's origin is uncertain. It has been speculated that its name may be related to
+              Morris dances, and hence to Moorish, but according to Daniel King, "the word 'morris' has nothing to do
+              with the old English dance of the same name. It comes from the Latin word merellus, which means a counter
+              or gaming piece." King also notes that the game was popular among Roman soldiers.
+
+              In some European countries, the design of the board was given special significance as a symbol of protection
+              from evil.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-
-
-    <h1>Instructions</h1>
-    <hr />
-
-    <h3>Objective</h3>
-
-    <p>
-      Force the other player into a position where it is impossible to win, either by
-      maneuvering so they cannot move, or by reducing them to two (2) pieces.
-    </p>
-
-    <h3>Rules</h3>
-
-    <p>
-      <ul>
-        <li>
-          At the outset of the game, each player has nine pieces to place on the board. The players
-          alternate placing their pieces on the board until all of the pieces have been placed.
-          Pieces can only be placed on one of the unoccupied spaces on the board. This is the
-          "Place" phase of the game, as indicated on the right-hand side (circled in blue):
-        </li>
-        <li>
-          Once all of the pieces have been placed on the board, the players take turns moving one
-          of their pieces to an unoccupied adjacent space. This is the "Move" phase of the game,
-          note the circled bit:
-        </li>
-        <li>
-          Whenever a player puts three pieces in a row (horizontally or vertically), they have
-          created a mill. Examples of mills:
-          <table class="centerContainer">
-            <tr>
-              <td>
-                <img src=@routes.Assets.versioned("images/mill_mill1.gif")>
-              </td>
-              <td>
-                <img src=@routes.Assets.versioned("images/mill_mill2.gif")>
-              </td>
-            </tr>
-          </table>
-        </li>
-        <li>
-          A mill may be formed either by placing a piece during the beginning of the game, or by
-          moving a piece after all of the pieces have been placed.
-        </li>
-        <li>
-          If a player has been reduced to only three (3) pieces, then the player may move one of
-          their pieces to any unoccupied space on the board -- they're no longer limited to just
-          moving to adjacent spaces.
-        </li>
-        <li>
-          When a player forms a mill, the player then removes one of the other player's pieces.
-          Any piece that is not itself part of a mill may be removed (except that if the other
-          player only has three pieces left and they're in a mill, any of those pieces can be removed).
-        </li>
-      </ul>
-    </p>
-
-    <h1>How to Play</h1>
-    <hr />
-
-    <table>
-      <tr>
-        <td><b>Route</b></td>
-        <td><b>Info</b></td>
-      </tr>
-      <tr>
-        <td>/</td>
-        <td>Renders the current game.</td>
-      </tr>
-      <tr>
-        <td>/about</td>
-        <td>Gives you information about the game.</td>
-      </tr>
-      <tr>
-        <td>/new</td>
-        <td>Creates a new game.</td>
-      </tr>
-      <tr>
-        <td>/random</td>
-        <td>Creates a game where all stones have been placed.</td>
-      </tr>
-      <tr>
-        <td>/undo</td>
-        <td>Undo the last step.</td>
-      </tr>
-      <tr>
-        <td>/redo</td>
-        <td>Redo the last undo</td>
-      </tr>
-      <tr>
-        <td>/XX</td>
-        <td>
-          Place a stone where XX stands for the coordinates where you want to place the stone.<br>
-            Example: <strong>/00</strong> is the upper left corner and <strong>/66</strong> is the lower right corner.
-        </td>
-      </tr>
-    </table>
+    <h1 class="text-center mt-3">Instructions</h1>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Objective</h5>
+            <p class="card-text">
+              Force the other player into a position where it is impossible to win, either by
+              maneuvering so they cannot move, or by reducing them to two (2) pieces.
+            </p>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title">How to Play</h5>
+            <p class="card-text">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <td><b>Route</b></td>
+                    <td><b>Info</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>/</td>
+                    <td>Renders the current game.</td>
+                  </tr>
+                  <tr>
+                    <td>/about</td>
+                    <td>Gives you information about the game.</td>
+                  </tr>
+                  <tr>
+                    <td>/new</td>
+                    <td>Creates a new game.</td>
+                  </tr>
+                  <tr>
+                    <td>/random</td>
+                    <td>Creates a game where all stones have been placed.</td>
+                  </tr>
+                  <tr>
+                    <td>/undo</td>
+                    <td>Undo the last step.</td>
+                  </tr>
+                  <tr>
+                    <td>/redo</td>
+                    <td>Redo the last undo</td>
+                  </tr>
+                  <tr>
+                    <td>/XX</td>
+                    <td>
+                      Place a stone where XX stands for the coordinates where you want to place the stone.<br>
+                      Example: <strong>/00</strong> is the upper left corner and <strong>/66</strong> is the lower right corner.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Rules</h5>
+            <p class="card-text">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  At the outset of the game, each player has nine pieces to place on the board. The players
+                  alternate placing their pieces on the board until all of the pieces have been placed.
+                  Pieces can only be placed on one of the unoccupied spaces on the board. This is the
+                  "Place" phase of the game, as indicated on the right-hand side (circled in blue):
+                </li>
+                <li class="list-group-item">
+                  Once all of the pieces have been placed on the board, the players take turns moving one
+                  of their pieces to an unoccupied adjacent space. This is the "Move" phase of the game,
+                  note the circled bit:
+                </li>
+                <li class="list-group-item">
+                  Whenever a player puts three pieces in a row (horizontally or vertically), they have
+                  created a mill. Examples of mills:
+                  <div class="row">
+                    <div class="col">
+                      <img class="img-fluid rounded" src=@routes.Assets.versioned("images/mill_mill1.gif")>
+                    </div>
+                    <div class="col">
+                      <img class="img-fluid rounded" src=@routes.Assets.versioned("images/mill_mill2.gif")>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  A mill may be formed either by placing a piece during the beginning of the game, or by
+                  moving a piece after all of the pieces have been placed.
+                </li>
+                <li class="list-group-item">
+                  If a player has been reduced to only three (3) pieces, then the player may move one of
+                  their pieces to any unoccupied space on the board -- they're no longer limited to just
+                  moving to adjacent spaces.
+                </li>
+                <li class="list-group-item">
+                  When a player forms a mill, the player then removes one of the other player's pieces.
+                  Any piece that is not itself part of a mill may be removed (except that if the other
+                  player only has three pieces left and they're in a mill, any of those pieces can be removed).
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 }
