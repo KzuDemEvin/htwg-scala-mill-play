@@ -23,8 +23,8 @@
             <a href="/undo" class="btn btn-secondary" style="background-color: darkslategray">Undo</a>
             <a href="/redo" class="btn btn-secondary" style="background-color: darkslategray">Redo</a>
         </div>
-        <img class="img-fluid" src=@routes.Assets.versioned("images/media/WhiteStone.png")>
-        <table>
+        <div class="table-responsive" style="background-color: slategrey">
+        <table class="mx-auto w-auto">
             @for(row <- 0 until size) {
                 <tr>
                     @for(col <- 0 until size) {
@@ -78,5 +78,6 @@
                 </tr>
             }
         </table>
+        </div>
     </div>
 }
