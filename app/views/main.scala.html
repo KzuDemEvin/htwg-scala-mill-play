@@ -16,6 +16,17 @@
         <script src="@routes.Assets.versioned("javascripts/bootstrap.min.js")" ></script>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container d-flex justify-content-center">
+                <a class="navbar-brand" href="/">
+                    <img src=@routes.Assets.versioned("images/mill.png") width="30" class="d-inline-block align-text-top">
+                    Mill Gameboard
+                </a>
+                <a class="navbar-brand" href="/about" class="d-inline-block align-text-top">
+                    About
+                </a>
+            </div>
+        </nav>
         @* And here's where we render the `Html` object containing
          * the page content. *@
         @content
