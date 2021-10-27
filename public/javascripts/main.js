@@ -1,5 +1,6 @@
 let gameContainer = document.querySelector(".gamecontainer");
 
+//test 123
 //document.body.addEventListener('click', checkForMill());
 /*
 jQuery(document).click(function() {
