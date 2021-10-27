@@ -40,6 +40,11 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
     }
   }
 
+  def getGame(): Action[AnyContent] = Action {
+    controller.fieldToString
+    Ok(print())
+  }
+
   def undo(): Action[AnyContent] = Action {
     controller.undo()
     Ok(print())
@@ -62,6 +67,7 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(
       JavaScriptReverseRouter("jsRoutes")(
         routes.javascript.MillController.playGame,
+        routes.javascript.MillController.randomGame,
         routes.javascript.Assets.versioned
       )
     ).as(MimeTypes.JAVASCRIPT)
