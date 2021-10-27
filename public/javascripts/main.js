@@ -15,6 +15,7 @@ function test(row, col) {
     console.log("Test  row: " + row + " col: " + col);
 
     if(document.readyState === 'complete') {
-        document.getElementsByClassName("tableCell"+row+col)[0].src = "";
+        console.log("Update tableCell"+ row+col);
+        document.getElementById("tableCell"+row+col).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
     }
 }

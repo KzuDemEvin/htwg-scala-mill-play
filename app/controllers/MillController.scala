@@ -62,7 +62,7 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(
       JavaScriptReverseRouter("jsRoutes")(
         routes.javascript.MillController.playGame,
-        routes.javascript.Assets.at
+        routes.javascript.Assets.versioned
       )
     ).as(MimeTypes.JAVASCRIPT)
   }
