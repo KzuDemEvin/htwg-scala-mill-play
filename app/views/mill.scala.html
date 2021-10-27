@@ -28,7 +28,7 @@
             @for(row <- 0 until size) {
                 <tr>
                     @for(col <- 0 until size) {
-                        <td>
+                        <td class="tableCell@row@col">
                             @if(controller.possiblePosition(row, col)) {
                                 @if(controller.isSet(row, col)) {
                                     @if(controller.cell(row, col).getContent.whichColor.equals(Color.white)) {

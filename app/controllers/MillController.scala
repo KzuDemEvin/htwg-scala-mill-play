@@ -61,7 +61,8 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
   def javascriptRoutes: Action[AnyContent] = Action { implicit request =>
     Ok(
       JavaScriptReverseRouter("jsRoutes")(
-        routes.javascript.MillController.playGame
+        routes.javascript.MillController.playGame,
+        routes.javascript.Assets.at
       )
     ).as(MimeTypes.JAVASCRIPT)
   }

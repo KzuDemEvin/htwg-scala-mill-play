@@ -13,4 +13,8 @@ jQuery(document).click(function() {
 
 function test(row, col) {
     console.log("Test  row: " + row + " col: " + col);
+
+    if(document.readyState === 'complete') {
+        document.getElementsByClassName("tableCell"+row+col)[0].src = "";
+    }
 }
