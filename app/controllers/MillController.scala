@@ -4,8 +4,10 @@ import com.google.inject.{Guice, Injector}
 import de.htwg.se.mill.MillModule
 import de.htwg.se.mill.controller.controllerComponent.{ControllerInterface, GameState}
 import play.api.mvc._
+import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
+
 import javax.inject._
-import play.twirl.api.Html
+import play.twirl.api.{Html, MimeTypes}
 
 @Singleton
 class MillController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
@@ -54,5 +56,13 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
 
   def print(): Html = {
     views.html.mill(controller)
+  }
+
+  def javascriptRoutes: Action[AnyContent] = Action { implicit request =>
+    Ok(
+      JavaScriptReverseRouter("jsRoutes")(
+        routes.javascript.MillController.playGame
+      )
+    ).as(MimeTypes.JAVASCRIPT)
   }
 }

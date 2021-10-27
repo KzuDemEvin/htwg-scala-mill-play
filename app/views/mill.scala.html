@@ -32,37 +32,37 @@
                             @if(controller.possiblePosition(row, col)) {
                                 @if(controller.isSet(row, col)) {
                                     @if(controller.cell(row, col).getContent.whichColor.equals(Color.white)) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/WhiteStone.png")></a>
+                                       <img class="img-fluid" src=@routes.Assets.versioned("images/media/WhiteStone.png")></a>
                                     } else {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/BlackStone.png")></a>
+                                       <img class="img-fluid" src=@routes.Assets.versioned("images/media/BlackStone.png")></a>
                                     }
                                 } else {
                                     @if(cellTopLeft.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopLeft.png")></a>
+                                        <img onclick="test('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopLeft.png")>
                                     }
-                                    @if(cellTopRight.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopRight.png")></a>
+                                    @if(cellTopRight.contains((row, col))) { <!-- <a href="@{s"/${row}${col}"}"> -->
+                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopRight.png")>
                                     }
                                     @if(cellBottomRight.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomRight.png")></a>
+                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomRight.png")>
                                     }
                                     @if(cellBottomLeft.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomLeft.png")></a>
+                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomLeft.png")>
                                     }
                                     @if(cellMiddle.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellMiddle.png")></a>
+                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellMiddle.png")>
                                     }
                                     @if(cellHorizontalTop.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalTop.png")></a>
+                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalTop.png")>
                                     }
                                     @if(cellHorizontalBottom.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalBottom.png")></a>
+                                       <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalBottom.png")>
                                     }
                                     @if(cellVerticalLeft.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalLeft.png")></a>
+                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalLeft.png")>
                                     }
                                     @if(cellVerticalRight.contains((row, col))) {
-                                        <a href="@{s"/${row}${col}"}"><img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalRight.png")></a>
+                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalRight.png")>
                                     }
                                 }
                             } else {

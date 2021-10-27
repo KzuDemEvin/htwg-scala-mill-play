@@ -1,7 +1,7 @@
 let gameContainer = document.querySelector(".gamecontainer");
 
 //document.body.addEventListener('click', checkForMill());
-
+/*
 jQuery(document).click(function() {
     console.log("click");
 
@@ -9,8 +9,8 @@ jQuery(document).click(function() {
         console.log("Hello");
     })
 })
+*/
 
-function checkForMill() {
-    console.log("Seife");
-    return;
+function test(row, col) {
+    console.log("Test  row: " + row + " col: " + col);
 }
