@@ -10,6 +10,9 @@ cellHorizontalBottom = [[2,3], [6,3]]
 cellVerticalLeft = [[3,0], [3,4]]
 cellVerticalRight = [[3,2], [3,6]]
 
+const MAXROWS = 7;
+const MAXCOLS = 7;
+
 
 //test 123,
 //document.body.addEventListener('click', checkForMill());
@@ -17,86 +20,67 @@ cellVerticalRight = [[3,2], [3,6]]
 
 jQuery(document).click(function() {
     console.log("click");
-    updateField();
 })
 
-
-function updateField() {
-    jsRoutes.controllers.MillController.newGame;
-
-
-
-    let container = document.getElementById("gamecontainer");
-
-
-}
-
+// Setzt den Stein an die gewünschte Stelle, und teilt diese Änderung dem Controller mit
 function setStone(row, col) {
     console.log("Test  row: " + row + " col: " + col);
 
-    //jsRoutes.controllers.MillController.playGame("" + row+col);
-    jsRoutes.controllers.MillController.randomGame;
-
-    /* // Baupfusch
+    jsRoutes.controllers.MillController.playGame("" + row+col);
+    
     if(document.readyState === 'complete') {
         console.log("Update tableCell"+ row+col);
+        if(jsRoutes.)
         document.getElementById("tableCell"+row+col).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
-    } */
+    }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
-<table class="mx-auto w-auto">
-            @for(row <- 0 until size) {
-                <tr>
-                    @for(col <- 0 until size) {
-                        <td>
-                            @if(controller.possiblePosition(row, col)) {
-                                @if(controller.isSet(row, col)) {
-                                    @if(controller.cell(row, col).getContent.whichColor.equals(Color.white)) {
-                                       <img class="img-fluid" src=@routes.Assets.versioned("images/media/WhiteStone.png")></a>
-                                    } else {
-                                       <img class="img-fluid" src=@routes.Assets.versioned("images/media/BlackStone.png")></a>
-                                    }
-                                } else {
-                                    @if(cellTopLeft.contains((row, col))) {
-                                        <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopLeft.png")>
-                                    }
-                                    @if(cellTopRight.contains((row, col))) { <!-- <a href="@{s"/${row}${col}"}"> -->
-                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopRight.png")>
-                                    }
-                                    @if(cellBottomRight.contains((row, col))) {
-                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomRight.png")>
-                                    }
-                                    @if(cellBottomLeft.contains((row, col))) {
-                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomLeft.png")>
-                                    }
-                                    @if(cellMiddle.contains((row, col))) {
-                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellMiddle.png")>
-                                    }
-                                    @if(cellHorizontalTop.contains((row, col))) {
-                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalTop.png")>
-                                    }
-                                    @if(cellHorizontalBottom.contains((row, col))) {
-                                       <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalBottom.png")>
-                                    }
-                                    @if(cellVerticalLeft.contains((row, col))) {
-                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalLeft.png")>
-                                    }
-                                    @if(cellVerticalRight.contains((row, col))) {
-                                        <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalRight.png")>
-                                    }
-                                }
-                            } else {
-                                @if(cellHorizontal.contains((row, col))) {
-                                    <img class="img-fluid" src=@routes.Assets.versioned("images/media/UnavailableCellHorizontal.png")>
-                                }
-                                @if(cellVertical.contains((row, col))) {
-                                    <img class="img-fluid" src=@routes.Assets.versioned("images/media/UnavailableCellVertical.png")>
-                                }
-                            }
-                        </td>
-                    }
-                </tr>
+function updateField() {
+    jsRoutes.controllers.MillController.newGame;
+
+    if(document.getElementById("gamecontainer").childElementCount < 1) {
+
+        let container = document.getElementById("gamecontainer");
+        let tbl = document.createElement("table");
+        let tblbody = document.createElement("tbody");
+
+        for(let i = 0; i < MAXROWS; i++) {
+
+            let tablerow = document.createElement("tr");
+
+            for(let j = 0; j < MAXCOLS; j++) {
+                let cell = document.createElement("td");
+                let img = document.createElement("img");
+
+
+                img.setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
+
+                cell.appendChild(img);
+                tablerow.appendChild(cell);
             }
-        </table>
+
+            tblbody.appendChild(tablerow);
+        }
+
+        tbl.appendChild(tblbody);
+        container.appendChild(tbl);
+    }
+} */
+/*
+
 */

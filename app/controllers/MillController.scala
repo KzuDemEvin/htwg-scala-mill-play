@@ -45,6 +45,11 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(print())
   }
 
+  def getCellColor(row: String, col: String): Action[AnyContent] = Action {
+    controller.cell(row.toInt, col.toInt).getContent.whichColor.toString
+    Ok(print())
+  }
+
   def undo(): Action[AnyContent] = Action {
     controller.undo()
     Ok(print())
