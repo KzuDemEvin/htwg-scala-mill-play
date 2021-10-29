@@ -42,28 +42,28 @@
                                 <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopLeft.png")>
                             }
                             @if(cellTopRight.contains((row, col))) { <!-- <a href="@{s"/${row}${col}"}"> -->
-                                <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopRight.png")>
+                                <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellTopRight.png")>
                             }
                             @if(cellBottomRight.contains((row, col))) {
-                                <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomRight.png")>
+                                <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomRight.png")>
                             }
                             @if(cellBottomLeft.contains((row, col))) {
-                                <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellBottomLeft.png")>
+                                <img id="tableCell@row@col" onclick="setStone('@row', '@col')" src=@routes.Assets.versioned("images/media/AvailableCellBottomLeft.png")>
                             }
                             @if(cellMiddle.contains((row, col))) {
-                                <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellMiddle.png")>
+                                <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellMiddle.png")>
                             }
                             @if(cellHorizontalTop.contains((row, col))) {
-                                <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalTop.png")>
+                                <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalTop.png")>
                             }
                             @if(cellHorizontalBottom.contains((row, col))) {
-                                <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalBottom.png")>
+                                <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellHorizontalBottom.png")>
                             }
                             @if(cellVerticalLeft.contains((row, col))) {
-                                <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalLeft.png")>
+                                <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalLeft.png")>
                             }
                             @if(cellVerticalRight.contains((row, col))) {
-                                <img class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalRight.png")>
+                                <img id="tableCell@row@col" onclick="setStone('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/AvailableCellVerticalRight.png")>
                             }
                         }
                     } else {

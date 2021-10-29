@@ -17,21 +17,44 @@ const MAXCOLS = 7;
 //test 123,
 //document.body.addEventListener('click', checkForMill());
 
-
+/*
 jQuery(document).click(function() {
     console.log("click");
 })
+*/
 
 // Setzt den Stein an die gewünschte Stelle, und teilt diese Änderung dem Controller mit
 function setStone(row, col) {
-    console.log("Test  row: " + row + " col: " + col);
 
+    let cellColor = null;
+    //TODO: Nächster Schritt funktioniert noch nicht
     jsRoutes.controllers.MillController.playGame("" + row+col);
+
+    $.ajax({
+            method: "GET",
+            url: "/cellColor/" +row + "/" + col,
+            dataType: "text",
+
+            //TODO: result wird nicht oder falsch in cellColor abgelegt
+            success: function (result) {
+                console.log(result);
+                cellColor = result;
+            }
+    });
+
     
     if(document.readyState === 'complete') {
         console.log("Update tableCell"+ row+col);
-        if(jsRoutes.)
-        document.getElementById("tableCell"+row+col).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
+        if(cellColor === "noColor") {
+            console.log("No Color there!");
+        } else if(cellColor === "white") {
+            console.log("Cell is white!");
+        } else if(cellColor === "black") {
+            console.log("Cell is black!");
+        } else {
+            console.log(cellColor);
+        }
+        //document.getElementById("tableCell"+row+col).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
     }
 }
 
