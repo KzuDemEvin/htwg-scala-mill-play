@@ -33,11 +33,9 @@ function interact(row, col) {
                 loadField()
             },
             error: () => {
-                console.error('error')
+                $("#myToast").toast("show");
             }
         });
-    } else {
-        console.error('error')
     }
 }
 
@@ -62,7 +60,7 @@ function loadField() {
             });
         },
         error: () => {
-            console.error('error')
+            $("#myToast").toast("show");
         }
     });
 }

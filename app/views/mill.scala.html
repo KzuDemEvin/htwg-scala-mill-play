@@ -16,6 +16,17 @@
 @cellVerticalRight= @{List((3,2), (3,6))}
 
 @main("HTWG Mill") {
+    <div aria-live="polite" aria-atomic="true" style="position: relative;">
+        <div class="toast" id="myToast" style="position: absolute; top: 3rem; right: 0;">
+            <div class="toast-header">
+                <strong class="me-auto"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                Something went wrong!
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="btn-group d-flex justify-content-center">
             <a href="/new" class="btn btn-secondary" style="background-color: darkslategray">New Game</a>
