@@ -10,23 +10,35 @@ cellHorizontalBottom = [[2,3], [6,3]]
 cellVerticalLeft = [[3,0], [3,4]]
 cellVerticalRight = [[3,2], [3,6]]
 
+const allowedPositions = [[0, 0], [0, 3], [0, 6], [1, 1], [1, 3], [1, 5], [2, 2], [2, 3], [2, 4], [3, 0], [3, 1], [3, 2],
+    [3, 4], [3, 5], [3, 6], [4, 2], [4, 3], [4, 4], [5, 1], [5, 3], [5, 5], [6, 0], [6, 3], [6, 6]];
+
 const MAXROWS = 7;
 const MAXCOLS = 7;
 
 function interact(row, col) {
-    $.ajax({
-        method: "GET",
-        url: `/${row}${col}`,
-        dataType: "json",
-
-        success: (result) => {
-            console.log(result.cell);
-            loadField()
-        },
-        error: () => {
-          console.error('error')
+    const contains = allowedPositions.some((item) => {
+        if (JSON.stringify(item) === JSON.stringify([Number(row), Number(col)])) {
+            return true;
         }
     });
+    if (contains) {
+        $.ajax({
+            method: "GET",
+            url: `/${row}${col}`,
+            dataType: "json",
+
+            success: (result) => {
+                console.log(result.cell);
+                loadField()
+            },
+            error: () => {
+                console.error('error')
+            }
+        });
+    } else {
+        console.error('error')
+    }
 }
 
 function loadField() {
