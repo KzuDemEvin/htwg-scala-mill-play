@@ -3,6 +3,7 @@ package controllers
 import com.google.inject.{Guice, Injector}
 import de.htwg.se.mill.MillModule
 import de.htwg.se.mill.controller.controllerComponent.{ControllerInterface, GameState}
+import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 
@@ -34,7 +35,7 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
     coords match {
       case _ => coords.toList.filter(p => p != ' ').filter(_.isDigit).map(p => p.toString.toInt) match {
         case row :: column :: Nil => controller.handleClick(row, column)
-          Ok(print())
+          Ok(cellToJson(row, column))
         case _ => BadRequest(print())
       }
     }
@@ -77,5 +78,37 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
         routes.javascript.Assets.versioned
       )
     ).as(MimeTypes.JAVASCRIPT)
+  }
+
+  def fieldToJson() = Action {
+    Ok(Json.prettyPrint(
+      Json.obj(
+        "field" -> Json.toJson(
+          for {
+            row <- 0 until gameSize
+            col <- 0 until gameSize
+          } yield {
+            Json.obj(
+              "row" -> row,
+              "col" -> col,
+              "color" -> Json.toJson(controller.cell(row, col).getContent.whichColor)
+            )
+          }
+        )
+      )
+    ))
+  }
+
+  def cellToJson(row: Int, col: Int): String = {
+    val cell = controller.cell(row, col)
+    Json.prettyPrint(
+      Json.obj(
+        "cell" -> Json.obj(
+          "row" -> row,
+          "col" -> col,
+          "color" -> cell.getContent.whichColor
+        )
+      )
+    )
   }
 }

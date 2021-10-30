@@ -13,97 +13,48 @@ cellVerticalRight = [[3,2], [3,6]]
 const MAXROWS = 7;
 const MAXCOLS = 7;
 
-
-//test 123,
-//document.body.addEventListener('click', checkForMill());
-
-/*
-jQuery(document).click(function() {
-    console.log("click");
-})
-*/
-
-// Setzt den Stein an die gewünschte Stelle, und teilt diese Änderung dem Controller mit
-function setStone(row, col) {
-
-    let cellColor = null;
-    //TODO: Nächster Schritt funktioniert noch nicht
-    jsRoutes.controllers.MillController.playGame("" + row+col);
-
+function interact(row, col) {
     $.ajax({
-            method: "GET",
-            url: "/cellColor/" +row + "/" + col,
-            dataType: "text",
+        method: "GET",
+        url: `/${row}${col}`,
+        dataType: "json",
 
-            //TODO: result wird nicht oder falsch in cellColor abgelegt
-            success: function (result) {
-                console.log(result);
-                cellColor = result;
-            }
-    });
-
-    
-    if(document.readyState === 'complete') {
-        console.log("Update tableCell"+ row+col);
-        if(cellColor === "noColor") {
-            console.log("No Color there!");
-        } else if(cellColor === "white") {
-            console.log("Cell is white!");
-        } else if(cellColor === "black") {
-            console.log("Cell is black!");
-        } else {
-            console.log(cellColor);
+        success: (result) => {
+            console.log(result.cell);
+            loadField()
+        },
+        error: () => {
+          console.error('error')
         }
-        //document.getElementById("tableCell"+row+col).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
-    }
+    });
 }
 
+function loadField() {
+    $.ajax({
+        method: "GET",
+        url: "/json",
+        dataType: "json",
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function updateField() {
-    jsRoutes.controllers.MillController.newGame;
-
-    if(document.getElementById("gamecontainer").childElementCount < 1) {
-
-        let container = document.getElementById("gamecontainer");
-        let tbl = document.createElement("table");
-        let tblbody = document.createElement("tbody");
-
-        for(let i = 0; i < MAXROWS; i++) {
-
-            let tablerow = document.createElement("tr");
-
-            for(let j = 0; j < MAXCOLS; j++) {
-                let cell = document.createElement("td");
-                let img = document.createElement("img");
-
-
-                img.setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
-
-                cell.appendChild(img);
-                tablerow.appendChild(cell);
-            }
-
-            tblbody.appendChild(tablerow);
+        success: (result) => {
+            result.field.forEach(entry => {
+                switch (entry.color) {
+                    case 'white':
+                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
+                        break;
+                    case 'black':
+                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/BlackStone.png").url);
+                        break;
+                    default:
+                    // Do nothing
+                }
+            });
+        },
+        error: () => {
+            console.error('error')
         }
+    });
+}
 
-        tbl.appendChild(tblbody);
-        container.appendChild(tbl);
-    }
-} */
-/*
-
-*/
+$(document).ready(function() {
+    loadField();
+});

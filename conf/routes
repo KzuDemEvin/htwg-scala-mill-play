@@ -10,6 +10,7 @@ GET     /new                        controllers.MillController.newGame
 GET     /random                     controllers.MillController.randomGame
 GET     /undo                       controllers.MillController.undo
 GET     /redo                       controllers.MillController.redo
+GET     /json                       controllers.MillController.fieldToJson
 GET     /javascriptRoutes           controllers.MillController.javascriptRoutes()
 GET     /:coords                    controllers.MillController.playGame(coords: String)
 GET     /cellColor/:row/:col        controllers.MillController.getCellColor(row: String, col: String)
