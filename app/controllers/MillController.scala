@@ -88,11 +88,19 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
             row <- 0 until gameSize
             col <- 0 until gameSize
           } yield {
-            Json.obj(
-              "row" -> row,
-              "col" -> col,
-              "color" -> Json.toJson(controller.cell(row, col).getContent.whichColor)
-            )
+            if (controller.possiblePosition(row, col)) {
+              Json.obj(
+                "row" -> row,
+                "col" -> col,
+                "color" -> Json.toJson(controller.cell(row, col).getContent.whichColor)
+              )
+            } else {
+              Json.obj(
+                "row" -> row,
+                "col" -> col,
+                "color" -> "empty"
+              )
+            }
           }
         )
       )

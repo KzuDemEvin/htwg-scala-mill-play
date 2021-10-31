@@ -1,20 +1,16 @@
-cellHorizontal = [[0,1], [0,2], [0,4], [0,5], [1,2], [1,4], [5,2], [5,4], [6,1], [6,2], [6,4], [6,2]];
-cellVertical =[[1,0], [1,6], [2,0], [2,1], [2,5], [2,6], [4,0], [4,1], [4,5], [4,6], [5,0], [5,6]]
-cellTopLeft = [[0,0], [1,1], [2,2]]
-cellTopRight = [[0,6], [1,5], [2,4]]
-cellBottomRight = [[6,6], [5,5], [4,4]]
-cellBottomLeft = [[6,0], [5,1], [4,2]]
-cellMiddle = [[1,3], [3,5], [5,3], [3,1]]
-cellHorizontalTop = [[0,3], [4,3]]
-cellHorizontalBottom = [[2,3], [6,3]]
-cellVerticalLeft = [[3,0], [3,4]]
-cellVerticalRight = [[3,2], [3,6]]
+const cells = new Map()
+        .set('AvailableCellTopLeft', [[0,0], [1,1], [2,2]])
+        .set('AvailableCellTopRight', [[0,6], [1,5], [2,4]])
+        .set('AvailableCellBottomRight', [[6,6], [5,5], [4,4]])
+        .set('AvailableCellBottomLeft', [[6,0], [5,1], [4,2]])
+        .set('AvailableCellMiddle', [[1,3], [3,5], [5,3], [3,1]])
+        .set('AvailableCellHorizontalTop', [[0,3], [4,3]])
+        .set('AvailableCellHorizontalBottom', [[2,3], [6,3]])
+        .set('AvailableCellVerticalLeft', [[3,0], [3,4]])
+        .set('AvailableCellVerticalRight', [[3,2], [3,6]])
 
 const allowedPositions = [[0, 0], [0, 3], [0, 6], [1, 1], [1, 3], [1, 5], [2, 2], [2, 3], [2, 4], [3, 0], [3, 1], [3, 2],
     [3, 4], [3, 5], [3, 6], [4, 2], [4, 3], [4, 4], [5, 1], [5, 3], [5, 5], [6, 0], [6, 3], [6, 6]];
-
-const MAXROWS = 7;
-const MAXCOLS = 7;
 
 function interact(row, col) {
     const contains = allowedPositions.some((item) => {
@@ -24,12 +20,11 @@ function interact(row, col) {
     });
     if (contains) {
         $.ajax({
-            method: "GET",
+            method: "PUT",
             url: `/${row}${col}`,
             dataType: "json",
 
-            success: (result) => {
-                console.log(result.cell);
+            success: () => {
                 loadField()
             },
             error: () => {
@@ -49,13 +44,21 @@ function loadField() {
             result.field.forEach(entry => {
                 switch (entry.color) {
                     case 'white':
-                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/WhiteStone.png").url);
+                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/WhiteStone.png`).url);
                         break;
                     case 'black':
-                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned("images/media/BlackStone.png").url);
+                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/BlackStone.png`).url);
+                        break;
+                    case 'noColor':
+                        let image = getCellPosition(entry.row, entry.col);
+                        if (image === '') {
+                            image = 'Error'
+                        }
+                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/${image}.png`).url);
+                        break;
+                    case 'empty':
                         break;
                     default:
-                    // Do nothing
                 }
             });
         },
@@ -63,6 +66,17 @@ function loadField() {
             $("#myToast").toast("show");
         }
     });
+}
+
+function getCellPosition(row, col) {
+    for (const [key, value] of cells.entries()) {
+        const found = value.some((item) => {
+            return JSON.stringify(item) === JSON.stringify([Number(row), Number(col)]);
+        });
+        if (found) {
+            return key
+        }
+    }
 }
 
 $(document).ready(function() {
