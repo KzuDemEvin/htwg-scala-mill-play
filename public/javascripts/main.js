@@ -12,6 +12,20 @@ const cells = new Map()
 const allowedPositions = [[0, 0], [0, 3], [0, 6], [1, 1], [1, 3], [1, 5], [2, 2], [2, 3], [2, 4], [3, 0], [3, 1], [3, 2],
     [3, 4], [3, 5], [3, 6], [4, 2], [4, 3], [4, 4], [5, 1], [5, 3], [5, 5], [6, 0], [6, 3], [6, 6]];
 
+function gameMethod(method, path) {
+    $.ajax({
+        method: method,
+        url: path,
+        dataType: 'text',
+        success: () => {
+            loadField();
+        },
+        error: () => {
+            $("#myToast").toast('show');
+        }
+    });
+}
+
 function interact(row, col) {
     const contains = allowedPositions.some((item) => {
         if (JSON.stringify(item) === JSON.stringify([Number(row), Number(col)])) {
@@ -20,15 +34,15 @@ function interact(row, col) {
     });
     if (contains) {
         $.ajax({
-            method: "PUT",
+            method: 'PUT',
             url: `/${row}${col}`,
-            dataType: "json",
+            dataType: 'json',
 
             success: () => {
-                loadField()
+                loadField();
             },
             error: () => {
-                $("#myToast").toast("show");
+                $("#myToast").toast('show');
             }
         });
     }
@@ -36,9 +50,9 @@ function interact(row, col) {
 
 function loadField() {
     $.ajax({
-        method: "GET",
-        url: "/json",
-        dataType: "json",
+        method: 'GET',
+        url: '/json',
+        dataType: 'json',
 
         success: (result) => {
             result.field.forEach(entry => {
@@ -63,7 +77,7 @@ function loadField() {
             });
         },
         error: () => {
-            $("#myToast").toast("show");
+            $("#myToast").toast('show');
         }
     });
 }

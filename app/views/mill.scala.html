@@ -27,12 +27,29 @@
             </div>
         </div>
     </div>
+    <div class="modal" tabindex="-1" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New Game</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to start a new game?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="gameMethod('POST', '/')">Yes</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="btn-group d-flex justify-content-center">
-            <a href="/new" class="btn btn-secondary" style="background-color: darkslategray">New Game</a>
-            <a href="/random" class="btn btn-secondary" style="background-color: darkslategray">Random Game</a>
-            <a href="/undo" class="btn btn-secondary" style="background-color: darkslategray">Undo</a>
-            <a href="/redo" class="btn btn-secondary" style="background-color: darkslategray">Redo</a>
+            <button type="button" class="btn btn-secondary" style="background-color: darkslategray" data-bs-toggle="modal" data-bs-target="#myModal">New Game</button>
+            <button type="button" class="btn btn-secondary" style="background-color: darkslategray" onclick="gameMethod('POST', '/random')">Random Game</button>
+            <button type="button" class="btn btn-secondary" style="background-color: darkslategray" onclick="gameMethod('PUT', '/undo')">Undo</button>
+            <button type="button" class="btn btn-secondary" style="background-color: darkslategray" onclick="gameMethod('PUT', '/redo')">Redo</button>
         </div>
         <div id="gamecontainer" class="table-responsive" style="background-color: slategrey">
         <!-- Content copied out to main.js -->
@@ -83,7 +100,7 @@
                         }
                         @if(cellVertical.contains((row, col))) {
                             <img id="@row,@col" onclick="interact('@row', '@col')" class="img-fluid" src=@routes.Assets.versioned("images/media/UnavailableCellVertical.png")>
-                            }
+                        }
                     }
                     </td>
                 }

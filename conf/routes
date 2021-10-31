@@ -7,9 +7,9 @@
 GET     /                           controllers.MillController.index
 GET     /about                      controllers.MillController.about()
 +nocsrf
-POST     /new                        controllers.MillController.newGame
+POST    /                           controllers.MillController.newGame
 +nocsrf
-POST     /random                     controllers.MillController.randomGame
+POST    /random                     controllers.MillController.randomGame
 +nocsrf
 PUT     /undo                       controllers.MillController.undo
 +nocsrf
