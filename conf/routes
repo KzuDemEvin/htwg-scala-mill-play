@@ -6,10 +6,14 @@
 # An example controller showing a sample home page
 GET     /                           controllers.MillController.index
 GET     /about                      controllers.MillController.about()
-GET     /new                        controllers.MillController.newGame
-GET     /random                     controllers.MillController.randomGame
-GET     /undo                       controllers.MillController.undo
-GET     /redo                       controllers.MillController.redo
++nocsrf
+POST     /new                        controllers.MillController.newGame
++nocsrf
+POST     /random                     controllers.MillController.randomGame
++nocsrf
+PUT     /undo                       controllers.MillController.undo
++nocsrf
+PUT     /redo                       controllers.MillController.redo
 GET     /json                       controllers.MillController.fieldToJson
 GET     /javascriptRoutes           controllers.MillController.javascriptRoutes()
 +nocsrf
