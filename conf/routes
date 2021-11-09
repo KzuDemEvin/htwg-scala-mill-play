@@ -16,6 +16,7 @@ PUT     /undo                       controllers.MillController.undo
 PUT     /redo                       controllers.MillController.redo
 GET     /json                       controllers.MillController.fieldToJson
 GET     /javascriptRoutes           controllers.MillController.javascriptRoutes()
+WebGET     /websocket                  controllers.MillController.socket
 +nocsrf
 PUT     /:coords                    controllers.MillController.playGame(coords: String)
 GET     /cellColor/:row/:col        controllers.MillController.getCellColor(row: String, col: String)

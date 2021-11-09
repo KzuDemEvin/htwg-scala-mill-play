@@ -1,5 +1,9 @@
 package controllers
 
+import play.api.libs.streams.ActorFlow
+import akka.actor.ActorSystem
+import akka.stream.Materializer
+import akka.actor._
 import com.google.inject.{Guice, Injector}
 import de.htwg.se.mill.MillModule
 import de.htwg.se.mill.controller.controllerComponent.{ControllerInterface, GameState}
@@ -11,7 +15,7 @@ import javax.inject._
 import play.twirl.api.{Html, MimeTypes}
 
 @Singleton
-class MillController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+class MillController @Inject()(val controllerComponents: ControllerComponents)(implicit system: ActorSystem, mat: Materializer) extends BaseController {
   val injector: Injector = Guice.createInjector(new MillModule)
   val controller: ControllerInterface = injector.getInstance(classOf[ControllerInterface])
 
@@ -118,5 +122,28 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
         )
       )
     )
+  }
+
+  def socket = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef { out =>
+      println("Connect received")
+      MyWebSocketActor.props(out)
+    }
+  }
+
+  object MyWebSocketActor {
+    def props(out: ActorRef) = {
+      println("Object created")
+      Props(new MyWebSocketActor(out))
+    }
+  }
+
+  class MyWebSocketActor(out: ActorRef) extends Actor {
+    println("Class created")
+    def receive = {
+      case msg: String =>
+        out ! ("I received your message: " + msg)
+        println("Received message "+ msg)
+    }
   }
 }
