@@ -126,5 +126,5 @@ function connectWebSocket() {
 
 $(document).ready(function() {
     loadField();
-    connectWebSocket();
+    connectWebSocket()
 });

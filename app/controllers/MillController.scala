@@ -6,13 +6,15 @@ import akka.stream.Materializer
 import akka.actor._
 import com.google.inject.{Guice, Injector}
 import de.htwg.se.mill.MillModule
-import de.htwg.se.mill.controller.controllerComponent.{ControllerInterface, GameState}
+import de.htwg.se.mill.controller.controllerComponent.{CellChanged, ControllerInterface, GameState}
 import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 
 import javax.inject._
 import play.twirl.api.{Html, MimeTypes}
+
+import scala.swing.Reactor
 
 @Singleton
 class MillController @Inject()(val controllerComponents: ControllerComponents)(implicit system: ActorSystem, mat: Materializer) extends BaseController {
@@ -127,14 +129,34 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
   def socket = WebSocket.accept[String, String] { request =>
     ActorFlow.actorRef { out =>
       println("Connect received")
-      MyWebSocketActor.props(out)
+      MillWebSocketActorFactory.create(out)
     }
   }
 
-  object MyWebSocketActor {
-    def props(out: ActorRef) = {
-      println("Object created")
-      Props(new MyWebSocketActor(out))
+  object MillWebSocketActorFactory {
+    def create(out: ActorRef) = {
+      Props(new MillWebSocketActor(out))
+    }
+  }
+
+  class MillWebSocketActor(out: ActorRef) extends Actor with Reactor {
+    listenTo(controller)
+
+    def receive = {
+      case msg: String =>
+        out ! ("I received your message: " + msg)
+        println("Received message "+ msg)
+        out ! (fieldToJson())
+        println("Sent Json to Client"+ msg)
+    }
+
+    reactions += {
+      case event: CellChanged     => sendJsonToClient
+    }
+
+    def sendJsonToClient = {
+      println("Received event from Controller")
+      out ! (fieldToJson())
     }
   }
 
