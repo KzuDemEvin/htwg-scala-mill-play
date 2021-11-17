@@ -55,7 +55,7 @@ function loadField() {
         dataType: 'json',
 
         success: (result) => {
-            result.field.forEach(entry => {
+            result.game.field.forEach(entry => {
                 switch (entry.color) {
                     case 'white':
                         document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/WhiteStone.png`).url);
@@ -64,6 +64,7 @@ function loadField() {
                         document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/BlackStone.png`).url);
                         break;
                     case 'noColor':
+                        console.log(entry)
                         let image = getCellPosition(entry.row, entry.col);
                         if (image === '') {
                             image = 'Error'
@@ -75,6 +76,17 @@ function loadField() {
                     default:
                 }
             });
+            if (result.game.winner !== 'No Winner') {
+                document.getElementById('winnerModalTitle').innerHTML = result.game.winner;
+                let winner = '';
+                if (result.game.winner === 'White wins') {
+                    winner = 'White';
+                } else {
+                    winner = 'Black';
+                }
+                document.getElementById('winnerModalBody').innerHTML = winner;
+                $('#winnerModal').modal('show');
+            }
         },
         error: () => {
             $("#myToast").toast('show');

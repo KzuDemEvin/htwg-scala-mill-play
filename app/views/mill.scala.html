@@ -35,6 +35,22 @@
             </div>
         </div>
     </div>
+    <div class="modal" tabindex="-1" id="winnerModal">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="winnerModalTitle"></h5>
+                </div>
+                <div class="modal-body">
+                    <p>Congratulation to <strong id="winnerModalBody"></strong>  for winning the game!</p>
+                    <p>Do you like to start a new game?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" onclick="gameMethod('POST', '/')">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="btn-group d-flex justify-content-center">
             <button type="button" class="btn btn-secondary" style="background-color: darkslategray" data-bs-toggle="modal" data-bs-target="#myModal">New Game</button>
