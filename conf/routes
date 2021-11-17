@@ -14,7 +14,7 @@ POST    /random                     controllers.MillController.randomGame
 PUT     /undo                       controllers.MillController.undo
 +nocsrf
 PUT     /redo                       controllers.MillController.redo
-GET     /json                       controllers.MillController.fieldToJson
+GET     /json                       controllers.MillController.fieldToJsonAction
 GET     /javascriptRoutes           controllers.MillController.javascriptRoutes()
 GET     /websocket                  controllers.MillController.socket
 +nocsrf

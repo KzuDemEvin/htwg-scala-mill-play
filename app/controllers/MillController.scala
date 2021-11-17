@@ -88,8 +88,12 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
     ).as(MimeTypes.JAVASCRIPT)
   }
 
-  def fieldToJson() = Action {
-    Ok(Json.prettyPrint(
+  def fieldToJsonAction(): Action[AnyContent] = Action {
+    Ok(fieldToJson())
+  }
+
+  def fieldToJson(): String = {
+    Json.prettyPrint(
       Json.obj(
         "game" -> Json.obj(
           "roundCounter" -> JsNumber(controller.getRoundCounter),
@@ -116,7 +120,7 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
           )
         )
       )
-    ))
+    )
   }
 
   def cellToJson(row: Int, col: Int): String = {
@@ -140,7 +144,7 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
   }
 
   object MillWebSocketActorFactory {
-    def create(out: ActorRef) = {
+    def create(out: ActorRef): Props = {
       Props(new MillWebSocketActor(out))
     }
   }
@@ -150,28 +154,17 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
 
     def receive = {
       case msg: String =>
-        out ! ("I received your message: " + msg)
-        println("Received message "+ msg)
         out ! (fieldToJson())
         println("Sent Json to Client"+ msg)
     }
 
     reactions += {
-      case event: CellChanged     => sendJsonToClient
+      case event: CellChanged => sendJsonToClient
     }
 
     def sendJsonToClient = {
       println("Received event from Controller")
-      out ! (fieldToJson())
-    }
-  }
-
-  class MyWebSocketActor(out: ActorRef) extends Actor {
-    println("Class created")
-    def receive = {
-      case msg: String =>
-        out ! ("I received your message: " + msg)
-        println("Received message "+ msg)
+      out ! fieldToJson()
     }
   }
 }
