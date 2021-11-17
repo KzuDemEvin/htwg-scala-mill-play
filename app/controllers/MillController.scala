@@ -85,7 +85,7 @@ class MillController @Inject()(val controllerComponents: ControllerComponents) e
       Json.obj(
         "game" -> Json.obj(
           "roundCounter" -> JsNumber(controller.getRoundCounter),
-          "winner" -> Json.toJson(controller.winnerText),
+          "winner" -> JsNumber(controller.getRoundManager.winner),
           "field" -> Json.toJson(
             for {
               row <- 0 until gameSize
