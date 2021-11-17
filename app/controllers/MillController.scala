@@ -8,6 +8,8 @@ import com.google.inject.{Guice, Injector}
 import de.htwg.se.mill.MillModule
 import de.htwg.se.mill.controller.controllerComponent.{CellChanged, ControllerInterface, GameState}
 import play.api.libs.json.Json
+import de.htwg.se.mill.controller.controllerComponent.{ControllerInterface, GameState}
+import play.api.libs.json.{JsNumber, Json}
 import play.api.mvc._
 import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 
@@ -89,25 +91,29 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
   def fieldToJson() = Action {
     Ok(Json.prettyPrint(
       Json.obj(
-        "field" -> Json.toJson(
-          for {
-            row <- 0 until gameSize
-            col <- 0 until gameSize
-          } yield {
-            if (controller.possiblePosition(row, col)) {
-              Json.obj(
-                "row" -> row,
-                "col" -> col,
-                "color" -> Json.toJson(controller.cell(row, col).getContent.whichColor)
-              )
-            } else {
-              Json.obj(
-                "row" -> row,
-                "col" -> col,
-                "color" -> "empty"
-              )
+        "game" -> Json.obj(
+          "roundCounter" -> JsNumber(controller.getRoundCounter),
+          "winner" -> JsNumber(controller.getRoundManager.winner),
+          "field" -> Json.toJson(
+            for {
+              row <- 0 until gameSize
+              col <- 0 until gameSize
+            } yield {
+              if (controller.possiblePosition(row, col)) {
+                Json.obj(
+                  "row" -> row,
+                  "col" -> col,
+                  "color" -> Json.toJson(controller.cell(row, col).getContent.whichColor)
+                )
+              } else {
+                Json.obj(
+                  "row" -> row,
+                  "col" -> col,
+                  "color" -> "empty"
+                )
+              }
             }
-          }
+          )
         )
       )
     ))
