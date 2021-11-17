@@ -57,40 +57,44 @@ function loadField() {
         dataType: 'json',
 
         success: (result) => {
-            result.game.field.forEach(entry => {
-                switch (entry.color) {
-                    case 'white':
-                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/WhiteStone.png`).url);
-                        break;
-                    case 'black':
-                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/BlackStone.png`).url);
-                        break;
-                    case 'noColor':
-                        let image = getCellPosition(entry.row, entry.col);
-                        if (image === '') {
-                            image = 'Error'
-                        }
-                        document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/${image}.png`).url);
-                        break;
-                    case 'empty':
-                        break;
-                    default:
-                }
-            });
-            if (result.game.winner !== 0) {
-                let winner = '';
-                if (result.game.winner === 1) {
-                    winner = 'White';
-                } else {
-                    winner = 'Black';
-                }
-                winningScreen(winner);
-            }
+            reloadField(result)
         },
         error: () => {
             $("#myToast").toast('show');
         }
     });
+}
+
+function reloadField(json) {
+    json.game.field.forEach(entry => {
+        switch (entry.color) {
+            case 'white':
+                document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/WhiteStone.png`).url);
+                break;
+            case 'black':
+                document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/BlackStone.png`).url);
+                break;
+            case 'noColor':
+                let image = getCellPosition(entry.row, entry.col);
+                if (image === '') {
+                    image = 'Error'
+                }
+                document.getElementById(`${entry.row},${entry.col}`).setAttribute("src", jsRoutes.controllers.Assets.versioned(`images/media/${image}.png`).url);
+                break;
+            case 'empty':
+                break;
+            default:
+        }
+    });
+    if (json.game.winner !== 0) {
+        let winner = '';
+        if (result.game.winner === 1) {
+            winner = 'White';
+        } else {
+            winner = 'Black';
+        }
+        winningScreen(winner);
+    }
 }
 
 function getCellPosition(row, col) {
@@ -146,7 +150,6 @@ function connectWebSocket() {
 
     websocket.onopen = function(event) {
         console.log("Trying to connect to Server");
-        websocket.send("Trying to connect to Server");
     }
 
     websocket.onclose = function () {
@@ -159,13 +162,7 @@ function connectWebSocket() {
 
     websocket.onmessage = function (e) {
         if (typeof e.data === "string") {
-            console.log('String message received: ' + e.data);
-        }
-        else if (e.data instanceof ArrayBuffer) {
-            console.log('ArrayBuffer received: ' + e.data);
-        }
-        else if (e.data instanceof Blob) {
-            console.log('Blob received: ' + e.data);
+            reloadField(JSON.parse(e.data));
         }
     };
 }
