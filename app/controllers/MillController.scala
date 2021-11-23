@@ -15,6 +15,7 @@ import play.api.routing.{JavaScriptReverseRoute, JavaScriptReverseRouter}
 
 import javax.inject._
 import play.twirl.api.{Html, MimeTypes}
+import scala.io.Source
 
 import scala.swing.Reactor
 
@@ -74,13 +75,22 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
   }
 
   def info(path: String): Action[AnyContent] = Action {
+    var source: String = ""
     if (path.equals("about")) {
+      source = Source.fromFile("public/data/about.json").getLines.mkString
+      Ok(Json.parse(source))
     } else if (path.equals("history")) {
+      source = Source.fromFile("public/data/history.json").getLines.mkString
+      Ok(Json.parse(source))
     } else if (path.equals("objective")) {
-    } else if (path.equals("guide")) {
+      source = Source.fromFile("public/data/objective.json").getLines.mkString
+      Ok(Json.parse(source))
     } else if (path.equals("rules")) {
+      source = Source.fromFile("public/data/rules.json").getLines.mkString
+      Ok(Json.parse(source))
+    } else {
+      BadRequest("Not a valid path!")
     }
-    Ok(fieldToJson())
   }
 
   def print(): Html = {
