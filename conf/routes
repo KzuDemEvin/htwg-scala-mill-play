@@ -19,6 +19,7 @@ GET     /javascriptRoutes           controllers.MillController.javascriptRoutes(
 GET     /websocket                  controllers.MillController.socket
 +nocsrf
 PUT     /:coords                    controllers.MillController.playGame(coords: String)
+GET     /info/:path                 controllers.MillController.info(path: String)
 GET     /cellColor/:row/:col        controllers.MillController.getCellColor(row: String, col: String)
 
 # Map static resources from the /public folder to the /assets URL path

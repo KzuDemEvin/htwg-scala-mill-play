@@ -73,6 +73,16 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
     Ok(views.html.index())
   }
 
+  def info(path: String): Action[AnyContent] = Action {
+    if (path.equals("about")) {
+    } else if (path.equals("history")) {
+    } else if (path.equals("objective")) {
+    } else if (path.equals("guide")) {
+    } else if (path.equals("rules")) {
+    }
+    Ok(fieldToJson())
+  }
+
   def print(): Html = {
     views.html.mill(controller)
   }
