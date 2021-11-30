@@ -88,6 +88,9 @@ class MillController @Inject()(val controllerComponents: ControllerComponents)(i
     } else if (path.equals("rules")) {
       source = Source.fromFile("public/data/rules.json").getLines.mkString
       Ok(Json.parse(source))
+    } else if (path.equals("guide")) {
+      source = Source.fromFile("public/data/guide.json").getLines.mkString
+      Ok(Json.parse(source))
     } else {
       BadRequest("Not a valid path!")
     }

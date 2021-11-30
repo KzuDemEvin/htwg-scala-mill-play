@@ -1,0 +1,30 @@
+[
+  {
+    "route": "/",
+    "info": "Renders the current game."
+  },
+  {
+    "route": "/about",
+    "info": "Gives you information about the game."
+  },
+  {
+    "route": "/new",
+    "info": "Creates a new game."
+  },
+  {
+    "route": "/random",
+    "info": "Creates a game where all stones have been placed."
+  },
+  {
+    "route": "/undo",
+    "info": "Undo the last step."
+  },
+  {
+    "route": "/redo",
+    "info": "Redo the last undo."
+  },
+  {
+    "route": "/XX",
+    "info": "\tPlace a stone where XX stands for the coordinates where you want to place the stone.\nExample: /00 is the upper left corner and /66 is the lower right corner."
+  }
+]
