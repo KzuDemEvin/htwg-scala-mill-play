@@ -145,7 +145,7 @@ async function winningScreen(winner) {
 
 function connectWebSocket() {
     console.log("Connecting to Websocket");
-    let websocket = new WebSocket("ws://localhost:9000/websocket");
+    let websocket = new WebSocket("ws://htwg-scala-mill-play.herokuapp.com//websocket");
     console.log("Connected to Websocket");
 
     websocket.onopen = function(event) {
