@@ -15,6 +15,6 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "2.1.1"
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "de.htwg.wa.controllers._"
-git add .
+
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "de.htwg.wa.binders._"
